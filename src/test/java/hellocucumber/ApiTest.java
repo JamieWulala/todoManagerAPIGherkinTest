@@ -9,9 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiTest {
-    protected static Process proc;
+    protected Process proc;
 
-    public static void setup() {
+    public void setup() {
         //Set base URI
         RestAssured.baseURI = "http://localhost:4567";
         //start the application
@@ -21,7 +21,7 @@ public class ApiTest {
             //System.out.println("------Application started------");
             InputStream in = proc.getInputStream();
             InputStream err = proc.getErrorStream();
-            Thread.sleep(10000);
+            Thread.sleep(500);
         } catch (Exception e) {
             System.out.println(e.toString());
         }

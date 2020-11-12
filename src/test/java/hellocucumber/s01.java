@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
 
 public class s01 extends ApiTest {
 
-    @Given("There is a valid endpoint")
+    @Given("there is a valid endpoint")
     public void there_is_a_valid_endpoint() {
-        System.out.println("=============^^^^^^^^^^^+++++++++++================");
+        // Write code here that turns the phrase above into concrete actions
         setup();
     }
 
@@ -81,5 +81,6 @@ public class s01 extends ApiTest {
     @Then("close server")
     public void close_server() {
         // Write code here that turns the phrase above into concrete actions
+        shutdown();
     }
 }
