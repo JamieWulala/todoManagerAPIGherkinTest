@@ -10,7 +10,7 @@ Feature: Categorize A Task
     Given There are HIGH, MEDIUM and LOW priority categories
     And A Todo named 'Assignment1' has no priority category
     When I request to change Todo 'Assignment1' to HIGH priority category
-    Then I should receive a confirmation message
+    Then The Todo 'Assignment1' should be in HIGH priority category
     And I shutdown the server
 
   Scenario: Categorize a Task to Another Priority Level (Alternate Flow)
@@ -18,10 +18,10 @@ Feature: Categorize A Task
     Given There are HIGH, MEDIUM and LOW priority categories
     And A Todo named 'Assignment1' is in LOW priority category
     When I request to change Todo 'Assignment1' to HIGH priority category
-    Then I should receive a confirmation message
+    Then The Todo 'Assignment1' should be in HIGH priority category
     And I shutdown the server
 
-  Scenario: Categorize a Task that does not exist (Error Flow)
+  Scenario: Categorize a Task That Does Not Exist (Error Flow)
 
     Given There are HIGH, MEDIUM and LOW priority categories
     And There is no Todo named 'Assignment1' in the system

@@ -93,8 +93,8 @@ public class s01 extends ApiTest {
             post("/todos/{id}/categories", todoId);
     }
 
-    @Then("^I should receive a confirmation message$")
-    public void i_should_receive_a_confirmation_message() throws Throwable {
+    @Then("^The Todo 'Assignment1' should be in HIGH priority category$")
+    public void the_todo_assignment1_should_be_in_high_priority_category() throws Throwable {
         RestAssured.baseURI = "http://localhost:4567";
         when().
             get("/todos/{id}", todoId).
