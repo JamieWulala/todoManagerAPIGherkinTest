@@ -21,7 +21,7 @@ public class ApiTest {
             //System.out.println("------Application started------");
             InputStream in = proc.getInputStream();
             InputStream err = proc.getErrorStream();
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (Exception e) {
             System.out.println(e.toString());
         }

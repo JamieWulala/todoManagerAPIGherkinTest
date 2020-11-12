@@ -1,5 +1,6 @@
 package hellocucumber;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,78 +10,163 @@ import io.restassured.RestAssured.*;
 
 import java.io.InputStream;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static org.junit.Assert.*;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class s01 extends ApiTest {
 
-    @Given("there is a valid endpoint")
-    public void there_is_a_valid_endpoint() {
-        // Write code here that turns the phrase above into concrete actions
+    //Category IDs
+    private static String categoryHighId;
+    private static String categoryMediumId;
+    private static String categoryLowId;
+    //Todo ID
+    private static String todoId;
+
+    @Given("^The server is running$")
+    public void the_server_is_running() throws Throwable {
         setup();
     }
 
-    @Given("there is a task with no priority category")
-    public void there_is_a_task_with_no_priority_category() {
+    @Given("^There are HIGH, MEDIUM and LOW priority categories$")
+    public void there_are_high_medium_and_low_priority_categories() throws Throwable {
+        RestAssured.baseURI = "http://localhost:4567";
+        String requestBodyCategoryHigh = "{\n" +
+                "  \"title\": \"HIGH\"\n" +
+                "}";
+        categoryHighId =
+            given().
+                contentType("application/json").
+                body(requestBodyCategoryHigh).
+            when().
+                post("/categories").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
+
+        String requestBodyCategoryMedium = "{\n" +
+                "  \"title\": \"MEDIUM\"\n" +
+                "}";
+        categoryMediumId =
+            given().
+                contentType("application/json").
+                body(requestBodyCategoryMedium).
+            when().
+                post("/categories").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
+
+        String requestBodyCategoryLow = "{\n" +
+                "  \"title\": \"LOW\"\n" +
+                "}";
+        categoryLowId =
+            given().
+                contentType("application/json").
+                body(requestBodyCategoryLow).
+            when().
+                post("/categories").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
+    }
+
+    @When("^I request to change Todo 'Assignment1' to HIGH priority category$")
+    public void i_request_to_change_todo_assignment1_to_high_priority_category() throws Throwable {
+        RestAssured.baseURI = "http://localhost:4567";
+        //ensure todo is not in Low category
+        when().
+            delete("/todos/{todoId}/categories/{categoryId}", todoId, categoryLowId);
+
+        String requestBodyTodoHighCategory = String.format("{\n" +
+                "  \"id\": \"%s\"\n" +
+                "}", categoryHighId);
+        given().
+            contentType("application/json").
+            body(requestBodyTodoHighCategory).
+        when().
+            post("/todos/{id}/categories", todoId);
+    }
+
+    @Then("^The Todo 'Assignment1' should be in HIGH priority category$")
+    public void the_todo_assignment1_should_be_in_high_priority_category() throws Throwable {
         RestAssured.baseURI = "http://localhost:4567";
         when().
-            get("/categories").
+            get("/todos/{id}", todoId).
         then().
-            statusCode(200);
+            statusCode(200).
+            body("todos.get(0).categories.get(0).id", equalTo(categoryHighId));
     }
 
-    @Given("there are priority categories as HIGH, MEDIUM, and LOW")
-    public void there_are_priority_categories_as_high_medium_and_low() {
+    @Then("^I should receive an error message$")
+    public void i_should_receive_an_error_message() throws Throwable {
         RestAssured.baseURI = "http://localhost:4567";
         when().
-                get("/categories").
-                then().
-                statusCode(200);
+            get("/todos/{id}", todoId).
+        then().
+            statusCode(404);
     }
-    @When("I change the category to HIGH")
-    public void i_change_the_category_to_high() {
+
+    @And("^A Todo named 'Assignment1' has no priority category$")
+    public void a_todo_named_assignment1_has_no_priority_category() throws Throwable {
         RestAssured.baseURI = "http://localhost:4567";
-        when().
-                get("/categories").
-                then().
-                statusCode(200);
-    }
-    @When("select HIGH")
-    public void select_high() {
-        RestAssured.baseURI = "http://localhost:4567";
-        when().
-                get("/categories").
-                then().
-                statusCode(200);
-    }
-    @Then("The task should be categorized as HIGH")
-    public void the_task_should_be_categorized_as_high() {
-        RestAssured.baseURI = "http://localhost:4567";
-        when().
-                get("/categories").
-                then().
-                statusCode(200);
+        String requestBodyTodo = "{\n" +
+                "  \"title\": \"Assignment1\"\n" +
+                "}";
+        todoId =
+            given().
+                contentType("application/json").
+                body(requestBodyTodo).
+            when().
+                post("/todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
     }
 
-    @Given("there is a task with HIGH priority")
-    public void there_is_a_task_with_high_priority() {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-    @When("I change the category to LOW")
-    public void i_change_the_category_to_low() {
-        // Write code here that turns the phrase above into concrete actions
-
-    }
-    @Then("The task should be categorized as LOW")
-    public void the_task_should_be_categorized_as_low() {
-        // Write code here that turns the phrase above into concrete actions
-
-    }
-
-    @Then("close server")
-    public void close_server() {
-        // Write code here that turns the phrase above into concrete actions
+    @And("^I shutdown the server$")
+    public void i_shutdown_the_server() throws Throwable {
         shutdown();
     }
+
+    @And("^A Todo named 'Assignment1' is in LOW priority category$")
+    public void a_todo_named_assignment1_is_in_low_priority_category() throws Throwable {
+        RestAssured.baseURI = "http://localhost:4567";
+        String requestBodyTodo = "{\n" +
+                "  \"title\": \"Assignment1\"\n" +
+                "}";
+        todoId =
+            given().
+                contentType("application/json").
+                body(requestBodyTodo).
+            when().
+                post("/todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
+
+        String requestBodyTodoLowCategory = String.format("{\n" +
+                "  \"id\": \"%s\"\n" +
+                "}", categoryLowId);
+        given().
+            contentType("application/json").
+                body(requestBodyTodoLowCategory).
+            when().
+                post("/todos/{id}/categories", todoId).
+            then().
+                statusCode(201);
+    }
+
+    @And("^There is no Todo named 'Assignment1' in the system$")
+    public void there_is_no_todo_named_assignment1_in_the_system() throws Throwable {
+        todoId = "10000";
+    }
+
 }
