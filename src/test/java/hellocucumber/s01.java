@@ -4,13 +4,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import io.restassured.RestAssured.*;
+
+import static io.restassured.RestAssured.when;
 import static org.junit.Assert.*;
 
-public class s01 {
+public class s01 extends ApiTest {
 
     @Given("there is a task with no priority category")
     public void there_is_a_task_with_no_priority_category() {
         // Write code here that turns the phrase above into concrete actions
+        when().
+            get("/categories").
+        then().
+            statusCode(200);
     }
 
     @Given("there are priority categories as HIGH, MEDIUM, and LOW")
