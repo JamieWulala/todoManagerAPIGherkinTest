@@ -68,7 +68,7 @@ public class s02 extends ApiTest {
         extract().
             jsonPath().getString("id");
 
-        todoId = "1000";
+        todoId = "10000";
     }
 
     @Then("^A Todo named 'Assignment2' should be in the system$")
