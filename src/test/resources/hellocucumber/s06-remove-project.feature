@@ -15,7 +15,7 @@ Feature: Remove project
     When I remove the project
     Then the project should be removed
 
-  Scenario: remove a non-existng project
+  Scenario: remove a non-existng project (error flow)
     Given there is a project id that doesn't exist
     When I remove the project
     Then it should return some error saying the project id does not exist
