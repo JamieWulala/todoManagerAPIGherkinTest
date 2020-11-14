@@ -1,4 +1,4 @@
-package hellocucumber;
+package PACKAGE_NAME;
 
-public class s06 extends ApiTest {
+public class s06 {
 }
