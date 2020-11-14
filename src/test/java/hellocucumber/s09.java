@@ -110,12 +110,12 @@ public class s09 extends ApiTest {
                 "  \"id\": \"%s\"\n" +
                 "}", categoryLowId);
          given().
-            contentType("application/json").
-                body(requestBodyTodoLowCategory).
-            when().
-                post("/todos/{id}/categories", assignment9ID).
-            then().
-                statusCode(201);
+                 contentType("application/json").
+                 body(requestBodyTodoLowCategory).
+         when().
+                 post("/todos/{id}/categories", assignment9ID).
+         then().
+                 statusCode(201);
 
     }
     @When("I request to change Todo {string} to HIGH priority category using category id")
@@ -125,13 +125,13 @@ public class s09 extends ApiTest {
         when().
             delete("/todos/{todoId}/categories/{categoryId}", assignment9ID, categoryLowId);
         // Create a relationship between your todo and high priority
-         String requestBodyTodoHighCategory = String.format("{\n" +
+        String requestBodyTodoHighCategory = String.format("{\n" +
                 "  \"id\": \"%s\"\n" +
                 "}", categoryHighId);
-         given().
+        given().
             contentType("application/json").
             body(requestBodyTodoHighCategory).
-         when().
+        when().
             post("/todos/{id}/categories", assignment9ID);
 
     }
@@ -174,17 +174,4 @@ public class s09 extends ApiTest {
         then().
             statusCode(404);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

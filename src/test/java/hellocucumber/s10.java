@@ -38,7 +38,6 @@ public class s10 {
                 statusCode(201).
                 extract().
                 jsonPath().getString("id");
-
     }
 
     @Given("A Todo named {string} does NOT exist")
@@ -60,8 +59,6 @@ public class s10 {
                 body(requestBodyAssignment10).
         when().
                 post("/todos/{id}", assignment10ID);
-
-
     }
 
     @When("I request to change Assignment10’s description to empty string")
@@ -88,8 +85,6 @@ public class s10 {
         then().
             statusCode(200).
             body("todos.get(0).description", equalTo(newDesc));
-
-
     }
 
     @Then("description of Assignment10 should be changed to empty string")
@@ -101,7 +96,6 @@ public class s10 {
         then().
             statusCode(200).
             body("todos.get(0).description", equalTo(emptyString));
-
     }
 
     @Then("I should receive an error message regarding the missing todo")
@@ -113,6 +107,4 @@ public class s10 {
             statusCode(404);
 
     }
-
-
 }

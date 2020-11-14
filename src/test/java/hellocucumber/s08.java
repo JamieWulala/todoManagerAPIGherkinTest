@@ -15,27 +15,27 @@ public class s08 {
     public void thereAreSomeTasksInSchoolProjectWhichAreIncomplete() {
     }
 
-    @io.cucumber.java.en.When("^I select view incomplete task in school project$")
+    @When("^I select view incomplete task in school project$")
     public void iSelectViewIncompleteTaskInSchoolProject() {
     }
 
-    @io.cucumber.java.en.Then("^task in school project that are incomplete should be shown$")
+    @Then("^task in school project that are incomplete should be shown$")
     public void taskInSchoolProjectThatAreIncompleteShouldBeShown() {
     }
 
-    @io.cucumber.java.en.Given("^There are some tasks in school project but are all completed$")
+    @Given("^There are some tasks in school project but are all completed$")
     public void thereAreSomeTasksInSchoolProjectButAreAllCompleted() {
     }
 
-    @io.cucumber.java.en.Then("^no task should be shown$")
+    @Then("^no task should be shown$")
     public void noTaskShouldBeShown() {
     }
 
-    @io.cucumber.java.en.Given("^There are some incomplete tasks but no project called school$")
+    @Given("^There are some incomplete tasks but no project called school$")
     public void thereAreSomeIncompleteTasksButNoProjectCalledSchool() {
     }
 
-    @io.cucumber.java.en.Then("^I should receive an error message for project does not exist$")
+    @Then("^I should receive an error message for project does not exist$")
     public void iShouldReceiveAnErrorMessageForProjectDoesNotExist() {
     }
 }
