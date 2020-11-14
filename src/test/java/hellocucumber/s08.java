@@ -11,31 +11,31 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class s08 {
 
-    @Given("^There are some tasks in school project which are incomplete$")
-    public void thereAreSomeTasksInSchoolProjectWhichAreIncomplete() {
+    @Given("There are some urgent and incomplete tasks")
+    public void thereAreSomeUrgentAndIncompleteTasks() {
     }
 
-    @When("^I select view incomplete task in school project$")
-    public void iSelectViewIncompleteTaskInSchoolProject() {
+    @When("I select view incomplete task with category `urgent`")
+    public void iSelectViewIncompleteTaskWithCategoryUrgent() {
     }
 
-    @Then("^task in school project that are incomplete should be shown$")
-    public void taskInSchoolProjectThatAreIncompleteShouldBeShown() {
+    @Then("task in urgent category that are incomplete should be shown")
+    public void taskInUrgentCategoryThatAreIncompleteShouldBeShown() {
     }
 
-    @Given("^There are some tasks in school project but are all completed$")
-    public void thereAreSomeTasksInSchoolProjectButAreAllCompleted() {
+    @Given("There is no task in urgent category that are incomplete")
+    public void thereIsNoTaskInUrgentCategoryThatAreIncomplete() {
     }
 
-    @Then("^no task should be shown$")
-    public void noTaskShouldBeShown() {
+    @Then("no task with category urgent should be shown")
+    public void noTaskWithCategoryUrgentShouldBeShown() {
     }
 
-    @Given("^There are some incomplete tasks but no project called school$")
-    public void thereAreSomeIncompleteTasksButNoProjectCalledSchool() {
+    @Given("There are some incomplete tasks but not in category urgent")
+    public void thereAreSomeIncompleteTasksButNotInCategoryUrgent() {
     }
 
-    @Then("^I should receive an error message for project does not exist$")
-    public void iShouldReceiveAnErrorMessageForProjectDoesNotExist() {
+    @Then("I should receive an error message for category does not exist")
+    public void iShouldReceiveAnErrorMessageForCategoryDoesNotExist() {
     }
 }

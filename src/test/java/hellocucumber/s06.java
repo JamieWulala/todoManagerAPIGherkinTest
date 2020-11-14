@@ -1,5 +1,6 @@
 package hellocucumber;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,10 +11,6 @@ import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.equalTo;
 
 public class s06 {
-
-    @Given("^The server is running$")
-    public void theServerIsRunning() {
-    }
 
     @Given("^there is a project and it has a few tasks$")
     public void thereIsAProjectAndItHasAFewTasks() {

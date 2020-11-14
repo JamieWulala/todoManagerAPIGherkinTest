@@ -1,5 +1,7 @@
 Feature: query task in a project with filter
   a user want to see their incomplete tasks for certain project
+  Background:
+    Given The server is running
 
   Scenario: There are tasks for school that are incomplete
     Given There are some tasks in school project which are incomplete

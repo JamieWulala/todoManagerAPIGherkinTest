@@ -1,17 +1,20 @@
-Feature: query task in a project with filter
-  a user want to see their incomplete tasks for certain project
+Feature: query task in a category with filter
+  a user want to see their incomplete tasks in certain category
 
-  Scenario: There are tasks for school that are incomplete
-    Given There are some tasks in school project which are incomplete
-    When I select view incomplete task in school project
-    Then task in school project that are incomplete should be shown
+  Background:
+    Given The server is running
 
-  Scenario: There are no tasks for school that are incomplete
-    Given There are some tasks in school project but are all completed
-    When I select view incomplete task in school project
-    Then no task should be shown
+  Scenario: There are some urgent and incomplete tasks
+    Given There are some urgent and incomplete tasks
+    When I select view incomplete task with category `urgent`
+    Then task in urgent category that are incomplete should be shown
 
-  Scenario: project school does not exist (error flow)
-    Given There are some incomplete tasks but no project called school
-    When I select view incomplete task in school project
-    Then I should receive an error message for project does not exist
+  Scenario: There is no task in urgent category that are incomplete
+    Given There is no task in urgent category that are incomplete
+    When I select view incomplete task with category `urgent`
+    Then no task with category urgent should be shown
+
+  Scenario: category urgent does not exist (error flow)
+    Given There are some incomplete tasks but not in category urgent
+    When I select view incomplete task with category `urgent`
+    Then I should receive an error message for category does not exist
