@@ -63,7 +63,7 @@ public class s06 extends ApiTest {
 
     @And("^The tasks within the project should be removed as well$")
     public void theTasksWithinTheProjectShouldBeRemovedAsWell() {
-        when().get("/todos/{id}", taskId).then().statusCode(200); //should be 404
+        when().get("/todos/{id}", taskId).then().statusCode(200); //TODO should be 404, known bug
     }
 
     @Given("^there is a project thats has no task$")
