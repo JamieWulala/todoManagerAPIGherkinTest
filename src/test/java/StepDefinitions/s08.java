@@ -1,6 +1,6 @@
-package hellocucumber;
+package StepDefinitions;
 import java.lang.*;
-import static java.lang.System.out;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

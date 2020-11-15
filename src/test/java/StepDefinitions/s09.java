@@ -1,20 +1,13 @@
-package hellocucumber;
+package StepDefinitions;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import io.restassured.RestAssured;
-import io.restassured.RestAssured.*;
-
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.junit.Assert.*;
 
 import static org.hamcrest.Matchers.equalTo;
 

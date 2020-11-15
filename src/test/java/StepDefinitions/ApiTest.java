@@ -1,12 +1,8 @@
-package hellocucumber;
+package StepDefinitions;
 
 import io.restassured.RestAssured;
-import org.junit.After;
-import org.junit.Before;
 
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class ApiTest {
     protected Process proc;

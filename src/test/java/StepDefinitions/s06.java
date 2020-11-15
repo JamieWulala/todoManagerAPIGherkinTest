@@ -1,4 +1,4 @@
-package hellocucumber;
+package StepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -8,7 +8,6 @@ import io.restassured.RestAssured;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.equalTo;
 
 public class s06 extends ApiTest {
 
