@@ -1,4 +1,4 @@
-Feature: Add A Course (Project)
+Feature: Add A Course Project
 
   As a student, I create a to do list for a new class I am taking, so I can manage course work.
 
