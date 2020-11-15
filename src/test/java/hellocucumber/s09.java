@@ -99,7 +99,6 @@ public class s09 extends ApiTest {
         public void a_todo_with_name_does_not_exist(String todoName) {
             // Change the TODO id to a value that doesn't exist
             assignment9ID = "9999";
-
     }
 
     @Given("a Todo with name {string} is in LOW priority category")
