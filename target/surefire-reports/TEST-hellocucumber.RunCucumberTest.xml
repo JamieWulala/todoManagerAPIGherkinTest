@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="21" failures="0" name="hellocucumber.RunCucumberTest" time="24.223" errors="0" skipped="0">
+  <properties>
+    <property name="idea.version" value="2020.2.3"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="15.0.1+9-18"/>
+    <property name="sun.boot.library.path" value="/Users/bariscincik/Library/Java/JavaVirtualMachines/openjdk-15.0.1/Contents/Home/lib"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/bariscincik/Desktop/Ecse429/Project/Part2/RepoJamie/todoManagerAPIGherkinTest"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="user.country" value="TR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/bariscincik/Desktop/Ecse429/Project/Part2/RepoJamie/todoManagerAPIGherkinTest"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="15.0.1+9-18"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/4z/rhb56rtj4sd2n0wb1glhy0tc0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="maven.ext.class.path" value="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/bariscincik/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="maven.conf" value="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="59.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.15.6"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/bariscincik"/>
+    <property name="user.timezone" value="Europe/Istanbul"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="15"/>
+    <property name="user.name" value="bariscincik"/>
+    <property name="java.class.path" value="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/boot/plexus-classworlds.license:/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="15"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.2.3 test"/>
+    <property name="java.home" value="/Users/bariscincik/Library/Java/JavaVirtualMachines/openjdk-15.0.1/Contents/Home"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="15.0.1"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/Applications/IntelliJ IDEA CE.app/Contents/plugins/maven/lib/maven3"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2020-10-20"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase classname="Categorize A Task" name="Categorize a Task without Priority Level (Normal Flow)" time="3.037"/>
+  <testcase classname="Categorize A Task" name="Categorize a Task to Another Priority Level (Alternate Flow)" time="1.136"/>
+  <testcase classname="Categorize A Task" name="Categorize a Task That Does Not Exist (Error Flow)" time="1.082"/>
+  <testcase classname="Add A Task" name="Add a Task With Title (Normal Flow)" time="1.036"/>
+  <testcase classname="Add A Task" name="Add a Task With Title And Description (Alternate Flow)" time="1.035"/>
+  <testcase classname="Add A Task" name="Add a Task Without Title (Error Flow)" time="1.043"/>
+  <testcase classname="Remove project" name="remove a project with a few tasks in it" time="1.069"/>
+  <testcase classname="Remove project" name="remove an empty project" time="1.038"/>
+  <testcase classname="Remove project" name="remove a non-existng project (error flow)" time="1.03"/>
+  <testcase classname="query task in a project with filter" name="There are tasks for school that are incomplete" time="1.073"/>
+  <testcase classname="query task in a project with filter" name="There are no tasks for school that are incomplete" time="1.073"/>
+  <testcase classname="query task in a project with filter" name="project school does not exist (error flow)" time="1.054"/>
+  <testcase classname="query task in a category with filter" name="There are some urgent and incomplete tasks" time="1.078"/>
+  <testcase classname="query task in a category with filter" name="There is no task in urgent category that are incomplete" time="1.079"/>
+  <testcase classname="query task in a category with filter" name="category urgent does not exist (error flow)" time="1.025"/>
+  <testcase classname="Change Priority #1" name="Change Priority Level of Task with using id(Normal Flow)" time="1.076"/>
+  <testcase classname="Change Priority #1" name="Change Priority Level of Task with using id and description(Alternate Flow)" time="1.092"/>
+  <testcase classname="Change Priority #1" name="Change Priority Level of non-existing Task(Error Flow)" time="1.059"/>
+  <testcase classname="Change Priority #2" name="Change Description of Task (Normal Flow)" time="1.041"/>
+  <testcase classname="Change Priority #2" name="Change Description of Task to empty string (Alternate Flow)" time="1.041"/>
+  <testcase classname="Change Priority #2" name="Change Description of a Task that does not exist (Error Flow)" time="1.026"/>
+</testsuite>

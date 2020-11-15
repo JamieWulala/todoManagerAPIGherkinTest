@@ -20,6 +20,7 @@ public class s07 {
     public void thereAreSomeTasksInSchoolProjectWhichAreIncomplete() {
         RestAssured.baseURI = "http://localhost:4567";
 
+        //Create project and record its id
         String requestBodySchoolProjeect = "{\n" +
                 "  \"title\": \"school\"\n" +
                 "}";
@@ -30,6 +31,7 @@ public class s07 {
                         .then().statusCode(201)
                         .extract().jsonPath().getString("id");
 
+        //Create a completed task in the project, and record its id
         String requestBodycompleteTask = "{\n" +
                 "  \"title\": \"completedTask\"\n," +
                 "  \"doneStatus\": true\n" +
@@ -41,6 +43,7 @@ public class s07 {
                 .then().statusCode(201)
                 .extract().jsonPath().getString("id");
 
+        //Create an incomplete task in the project, and record its id
         String requestBodyincompleteTask = "{\n" +
                 "  \"title\": \"completedTask\"\n," +
                 "  \"doneStatus\": false\n" +
@@ -60,6 +63,7 @@ public class s07 {
 
     @Then("^task in school project that are incomplete should be shown$")
     public void taskInSchoolProjectThatAreIncompleteShouldBeShown() {
+        //Make a query with filtering parameters to get the incomplete task
         when().get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId)
                 .then().statusCode(200)
                 .body("todos.get(0).id", equalTo(incompletedTaskId));
@@ -68,7 +72,7 @@ public class s07 {
     @Given("^There are some tasks in school project but are all completed$")
     public void thereAreSomeTasksInSchoolProjectButAreAllCompleted() {
         RestAssured.baseURI = "http://localhost:4567";
-
+        
         String requestBodySchoolProjeect = "{\n" +
                 "  \"title\": \"school\"\n" +
                 "}";
