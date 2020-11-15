@@ -21,11 +21,6 @@ public class s01 extends ApiTest {
     //Todo ID
     private static String todoId;
 
-    @Given("^The server is running$")
-    public void the_server_is_running() throws Throwable {
-        setup();
-    }
-
     @Given("^There are HIGH, MEDIUM and LOW priority categories$")
     public void there_are_high_medium_and_low_priority_categories() throws Throwable {
         RestAssured.baseURI = "http://localhost:4567";
@@ -124,11 +119,6 @@ public class s01 extends ApiTest {
                 statusCode(201).
             extract().
                 jsonPath().getString("id");
-    }
-
-    @And("^I shutdown the server$")
-    public void i_shutdown_the_server() throws Throwable {
-        shutdown();
     }
 
     @And("^A Todo named 'Assignment1' is in LOW priority category$")
