@@ -64,7 +64,9 @@ public class s06 extends ApiTest {
     @And("^The tasks within the project should be removed as well$")
     public void theTasksWithinTheProjectShouldBeRemovedAsWell() {
         when().
-            get("/todos/{id}", taskId).then().statusCode(200); //TODO should be 404, known bug
+            get("/todos/{id}", taskId).
+        then().
+            statusCode(200); //TODO should be 404, known bug
     }
 
     @Given("^there is a project thats has no task$")
@@ -88,12 +90,16 @@ public class s06 extends ApiTest {
     @Given("^there is a project id that doesn't exist$")
     public void thereIsAProjectIdThatDoesnTExist() {
         when().
-            get("/projects/{id}", NONEXISTING_ID).then().statusCode(404);
+            get("/projects/{id}", NONEXISTING_ID).
+        then().
+            statusCode(404);
     }
 
     @Then("^it should return some error saying the project id does not exist$")
     public void itShouldReturnSomeErrorSayingTheProjectIdDoesNotExist() {
         when().
-            delete("/projects/{id}", NONEXISTING_ID).then().statusCode(404);
+            delete("/projects/{id}", NONEXISTING_ID).
+        then().
+            statusCode(404);
     }
 }
