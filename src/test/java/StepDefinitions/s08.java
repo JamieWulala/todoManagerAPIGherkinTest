@@ -61,10 +61,15 @@ public class s08 {
                 "}";
 
         completedUrgentTaskId =
-                given().contentType("application/json").body(requestBodycompleteTask)
-                .when().post("/todos")
-                .then().statusCode(201)
-                .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").
+                body(requestBodycompleteTask).
+            when().
+                post("/todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         //Create an incomplete task and record its id
         String requestBodyincompleteTask = "{\n" +
@@ -73,10 +78,15 @@ public class s08 {
                 "}";
 
         incompleteUrgentTaskId =
-                given().contentType("application/json").body(requestBodyincompleteTask)
-                        .when().post("/todos")
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").
+                body(requestBodyincompleteTask).
+            when().
+                post("/todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
          //Now put both of them under the HIGH priority category
         String requestBodyTodoUrgentCompleted = String.format("{\n" +
@@ -87,7 +97,8 @@ public class s08 {
             body(requestBodyTodoUrgentCompleted).
         when().
             post("/categories/{id}/todos", categoryHighId).
-        then().statusCode(201);
+        then().
+            statusCode(201);
 
         String requestBodyTodoUrgentIncomplete = String.format("{\n" +
                 "  \"id\": \"%s\"\n" +
@@ -97,7 +108,8 @@ public class s08 {
             body(requestBodyTodoUrgentIncomplete).
         when().
             post("/categories/{id}/todos", categoryHighId).
-        then().statusCode(201);
+        then().
+            statusCode(201);
 
 
         //System.out.printf("\nAssociated both todos with the HIGH category id %s\n" , categoryHighId);
@@ -113,9 +125,11 @@ public class s08 {
     @Then("task in urgent category that are incomplete should be shown")
     public void taskInUrgentCategoryThatAreIncompleteShouldBeShown() {
         //Make a query with filtering parameters to get the incomplete task
-        when().get("categories/{categoryId}/todos?doneStatus=false", categoryHighId)
-                .then().statusCode(200).
-                body("todos.get(0).id", equalTo(incompleteUrgentTaskId));
+        when().
+            get("categories/{categoryId}/todos?doneStatus=false", categoryHighId).
+        then().
+            statusCode(200).
+            body("todos.get(0).id", equalTo(incompleteUrgentTaskId));
 
     }
 
@@ -128,10 +142,14 @@ public class s08 {
                 "}";
 
         completedUrgentTaskId =
-                given().contentType("application/json").body(requestBodycompleteTask)
-                .when().post("/todos")
-                .then().statusCode(201)
-                .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").body(requestBodycompleteTask).
+            when().
+                post("/todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         //Associate with HIGH category
         String requestBodyTodoUrgentCompleted = String.format("{\n" +
@@ -142,30 +160,34 @@ public class s08 {
             body(requestBodyTodoUrgentCompleted).
         when().
             post("/categories/{id}/todos", categoryHighId).
-        then().statusCode(201);
+        then().
+            statusCode(201);
     }
 
     @Then("no task with category urgent should be shown")
     public void noTaskWithCategoryUrgentShouldBeShown() {
         //Make a query with filtering parameters to get the incomplete task
-        when().get("categories/{categoryId}/todos?doneStatus=false", categoryHighId)
-                .then().statusCode(200).
-                body("todos.size()", equalTo(0));
+        when().
+            get("categories/{categoryId}/todos?doneStatus=false", categoryHighId).
+        then().
+            statusCode(200).
+            body("todos.size()", equalTo(0));
     }
 
 
     @Given("There is no category for HIGH priority")
     public void there_is_no_category_for_high_priority() {
         categoryHighId = "9999999999";
-
     }
 
 
     @Then("I should receive an error message for category does not exist")
     public void iShouldReceiveAnErrorMessageForCategoryDoesNotExist() {
         RestAssured.baseURI = "http://localhost:4567";
-        when().get("categories/{categoryId}", categoryHighId)
-                .then().statusCode(404);
+        when().
+            get("categories/{categoryId}", categoryHighId).
+        then().
+            statusCode(404);
 
     }
 }

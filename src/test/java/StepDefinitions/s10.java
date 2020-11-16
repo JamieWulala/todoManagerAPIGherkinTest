@@ -29,14 +29,14 @@ public class s10 {
                     "  \"title\": \"Assignment10\"\n" +
                     "}";
         assignment10ID =
-        given().
+            given().
                 contentType("application/json").
                 body(requestBodyAssignment10).
-        when().
+            when().
                 post("/todos").
-        then().
+            then().
                 statusCode(201).
-                extract().
+            extract().
                 jsonPath().getString("id");
     }
 
@@ -55,10 +55,10 @@ public class s10 {
                 "}", newDesc);
 
         given().
-                contentType("application/json").
-                body(requestBodyAssignment10).
+            contentType("application/json").
+            body(requestBodyAssignment10).
         when().
-                post("/todos/{id}", assignment10ID);
+            post("/todos/{id}", assignment10ID);
     }
 
     @When("I request to change Assignment10’s description to empty string")
@@ -70,10 +70,10 @@ public class s10 {
                 "}", emptyString);
 
         given().
-                contentType("application/json").
-                body(requestBodyAssignment10).
+            contentType("application/json").
+            body(requestBodyAssignment10).
         when().
-                put("/todos/{id}", assignment10ID);
+            put("/todos/{id}", assignment10ID);
 
     }
 

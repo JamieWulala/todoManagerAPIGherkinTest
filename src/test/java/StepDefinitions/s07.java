@@ -26,10 +26,14 @@ public class s07 {
                 "}";
 
         schoolProjectId =
-                given().contentType("application/json").body(requestBodySchoolProjeect)
-                        .when().post("/projects")
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").body(requestBodySchoolProjeect).
+            when().
+                post("/projects").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         //Create a completed task in the project, and record its id
         String requestBodycompleteTask = "{\n" +
@@ -38,10 +42,15 @@ public class s07 {
                 "}";
 
         completedTaskId =
-                given().contentType("application/json").body(requestBodycompleteTask)
-                .when().post("/projects/{projectId}/tasks", schoolProjectId)
-                .then().statusCode(201)
-                .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").
+                body(requestBodycompleteTask).
+            when().
+                post("/projects/{projectId}/tasks", schoolProjectId).
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         //Create an incomplete task in the project, and record its id
         String requestBodyincompleteTask = "{\n" +
@@ -50,23 +59,30 @@ public class s07 {
                 "}";
 
         incompletedTaskId =
-                given().contentType("application/json").body(requestBodyincompleteTask)
-                        .when().post("/projects/{projectId}/tasks", schoolProjectId)
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").body(requestBodyincompleteTask).
+            when().
+                post("/projects/{projectId}/tasks", schoolProjectId).
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
     }
 
     @When("^I select view incomplete task in school project$")
     public void iSelectViewIncompleteTaskInSchoolProject() {
-        when().get("projects/{projectId}/tasks", schoolProjectId);
+        when().
+            get("projects/{projectId}/tasks", schoolProjectId);
     }
 
     @Then("^task in school project that are incomplete should be shown$")
     public void taskInSchoolProjectThatAreIncompleteShouldBeShown() {
         //Make a query with filtering parameters to get the incomplete task
-        when().get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId)
-                .then().statusCode(200)
-                .body("todos.get(0).id", equalTo(incompletedTaskId));
+        when().
+            get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId).
+        then().
+            statusCode(200).
+            body("todos.get(0).id", equalTo(incompletedTaskId));
     }
 
     @Given("^There are some tasks in school project but are all completed$")
@@ -78,10 +94,14 @@ public class s07 {
                 "}";
 
         schoolProjectId =
-                given().contentType("application/json").body(requestBodySchoolProjeect)
-                        .when().post("/projects")
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").body(requestBodySchoolProjeect).
+            when().
+                post("/projects").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         String requestBodycompleteTask = "{\n" +
                 "  \"title\": \"completedTask\"\n," +
@@ -89,17 +109,24 @@ public class s07 {
                 "}";
 
         completedTaskId =
-                given().contentType("application/json").body(requestBodycompleteTask)
-                        .when().post("/projects/{projectId}/tasks", schoolProjectId)
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").
+                body(requestBodycompleteTask).
+            when().
+                post("/projects/{projectId}/tasks", schoolProjectId).
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
     }
 
     @Then("^no task should be shown$")
     public void noTaskShouldBeShown() {
-        when().get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId)
-                .then().statusCode(200)
-                .body("todos.size", equalTo(0));
+        when().
+            get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId).
+        then().
+            statusCode(200).
+            body("todos.size", equalTo(0));
     }
 
     @Given("^There are some incomplete tasks but no project called school$")
@@ -112,10 +139,14 @@ public class s07 {
                 "}";
 
         completedTaskId =
-                given().contentType("application/json").body(requestBodycompleteTask)
-                        .when().post("todos")
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").body(requestBodycompleteTask).
+            when().
+                post("todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
 
         String requestBodyincompleteTask = "{\n" +
                 "  \"title\": \"completedTask\"\n," +
@@ -123,15 +154,22 @@ public class s07 {
                 "}";
 
         incompletedTaskId =
-                given().contentType("application/json").body(requestBodyincompleteTask)
-                        .when().post("todos")
-                        .then().statusCode(201)
-                        .extract().jsonPath().getString("id");
+            given().
+                contentType("application/json").
+                body(requestBodyincompleteTask).
+            when().
+                post("todos").
+            then().
+                statusCode(201).
+            extract().
+                jsonPath().getString("id");
     }
 
     @Then("^I should receive an error message for project does not exist$")
     public void iShouldReceiveAnErrorMessageForProjectDoesNotExist() {
-        when().get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId)
-                .then().statusCode(200); //TODO should show an error message, it's a bug
+        when().
+            get("projects/{projectId}/tasks?doneStatus=false", schoolProjectId).
+        then().
+            statusCode(200); //TODO should show an error message, it's a bug
     }
 }

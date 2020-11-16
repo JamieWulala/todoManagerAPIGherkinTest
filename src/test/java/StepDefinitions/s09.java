@@ -75,14 +75,14 @@ public class s09 extends ApiTest {
                 "}", todoName);
 
         assignment9ID =
-        given().
+            given().
                 contentType("application/json").
                 body(requestBodyAssignment9).
-        when().
+            when().
                 post("/todos").
-        then().
+            then().
                 statusCode(201).
-                extract().
+            extract().
                 jsonPath().getString("id");
 
 
@@ -102,12 +102,12 @@ public class s09 extends ApiTest {
                 "  \"id\": \"%s\"\n" +
                 "}", categoryLowId);
          given().
-                 contentType("application/json").
-                 body(requestBodyTodoLowCategory).
+            contentType("application/json").
+            body(requestBodyTodoLowCategory).
          when().
-                 post("/todos/{id}/categories", assignment9ID).
+            post("/todos/{id}/categories", assignment9ID).
          then().
-                 statusCode(201);
+            statusCode(201);
 
     }
     @When("I request to change Todo {string} to HIGH priority category using category id")
