@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 public class ApiTest {
     protected Process proc;
-
+//
     public void setup() {
         //Set base URI
         RestAssured.baseURI = "http://localhost:4567";
